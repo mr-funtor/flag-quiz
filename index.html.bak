@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag Qiuz</title>
+	<link href="./css/main.css">
+</head>
+<body>
+	<main>
+		<h1>Country Flag Quiz</h1>
+		<button>What Country is this?</button>
+		
+		<section>
+			<img src=""/>
+			<p></p>
+			<p></p>
+		</section>
+		
+	
+	</main>
+	
+	<script src="./js/main.js"></script>
+</body>
+</html>
