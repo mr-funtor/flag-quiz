@@ -4,8 +4,11 @@ const hypeDisplay=document.querySelector('h3');
 const allLabels=document.querySelectorAll('label');
 const allinputs=document.querySelectorAll('input');
 const allParagraphs= document.querySelectorAll('p');
-console.log(countryWithImages[0]);
 
+
+
+
+//resets the flags again
 resetButton.addEventListener('click',pickRandomFlag);
 
 
@@ -14,11 +17,11 @@ let rightAnswer;
 function pickRandomFlag(){
 	hypeDisplay.textContent='Look carefully';
 	
-	//unchecks all radio buttons and add an event listener
+	//unchecks all radio buttons and adds an event listener
 	allinputs.forEach((item)=>{
 		item.addEventListener('change',checkRightAnswer);
 		item.checked=false;
-		item.disabled=false;
+		item.disabled=false;//enables the radio buttons
 	})
 	
 	const randomIndex=Math.floor(Math.random() *countryWithImages.length);
@@ -28,7 +31,7 @@ function pickRandomFlag(){
 	
 	pickRandomChoices()
 	
-	//pick a random choice to populate
+	//picks a random choice to populate
 	const choiceRandom=Math.floor(Math.random() *4);
 	allLabels[choiceRandom].textContent=countryPicked['name'];
 	allinputs[choiceRandom].value=countryPicked['name'];
@@ -42,6 +45,7 @@ pickRandomFlag()
 function pickRandomChoices(){
 	let countryOptions=[];
 	
+	//populates the array above excluding right answer so avoid conflict
 	while(countryOptions.length<4){
 		const randomIndex=Math.floor(Math.random() *countryWithImages.length);
 		const countryPicked=countryWithImages[randomIndex]['name'];
