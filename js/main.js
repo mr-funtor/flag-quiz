@@ -22,6 +22,8 @@ function pickRandomFlag(){
 		item.addEventListener('change',checkRightAnswer);
 		item.checked=false;
 		item.disabled=false;//enables the radio buttons
+		
+		item.parentElement.style.backgroundColor="transparent";//removes all the backgroundcolor of parent Elements
 	})
 	
 	const randomIndex=Math.floor(Math.random() *countryWithImages.length);
@@ -31,7 +33,7 @@ function pickRandomFlag(){
 	
 	pickRandomChoices()
 	
-	//picks a random choice to populate
+	//picks a random input and fills it with the right answer
 	const choiceRandom=Math.floor(Math.random() *4);
 	allLabels[choiceRandom].textContent=countryPicked['name'];
 	allinputs[choiceRandom].value=countryPicked['name'];
@@ -45,7 +47,7 @@ pickRandomFlag()
 function pickRandomChoices(){
 	let countryOptions=[];
 	
-	//populates the array above excluding right answer so avoid conflict
+	//populates the array above, while excluding right answer to avoid conflict
 	while(countryOptions.length<4){
 		const randomIndex=Math.floor(Math.random() *countryWithImages.length);
 		const countryPicked=countryWithImages[randomIndex]['name'];
@@ -61,20 +63,33 @@ function pickRandomChoices(){
 	
 }
 
+
 function checkRightAnswer(e){
-//disable the radio buttons
+	
+	//disable the radio buttons
 	allinputs.forEach((item)=>{
-		
 		item.disabled=true;
 		
 	})
 	
-//	console.log(e.currentTarget.value,rightAnswer)
+	
+	//If the answer picked is wrong
 	if(e.currentTarget.value!==rightAnswer){
-	return	hypeDisplay.textContent=`Aww Wrong. Right answer was ${rightAnswer} PlayAgain`;
+		e.currentTarget.parentElement.style.backgroundColor="red";
+		hypeDisplay.textContent=`Aww Wrong. PlayAgain`;
+	}else{
+		hypeDisplay.textContent='Yes!!! You are correct! Play Again';
+		
 	}
 	
-	hypeDisplay.textContent='Yes!!! You are correct! Play Again';
+	
+	//highlights the right answer in green
+	allinputs.forEach((item)=>{
+			if(item.value===rightAnswer){
+				item.parentElement.style.backgroundColor="green";
+			}
+		})
+	
 	
 }
 

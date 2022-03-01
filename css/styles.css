@@ -14,3 +14,20 @@ img{
 label,input{
 	cursor:pointer;
 }
+
+label{
+	height: 100%;
+	width:95%;
+}
+
+#country-selection-box{
+	width: 300px;
+}
+
+#country-selection-box>div{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2px;
+	padding: 2px 2px;
+}
+
